@@ -23,10 +23,11 @@ class Stage implements StageInterface
 
     /**
      * Stage constructor.
+     *
      * @param $callback
      * @param Stage|null $next
      */
-    public function __construct($callback, Stage $next = null)
+    public function __construct($callback, self $next = null)
     {
         $this->callback = $callback;
         $this->next = $next;
@@ -34,6 +35,7 @@ class Stage implements StageInterface
 
     /**
      * @param $payload
+     *
      * @return mixed
      */
     public function handle($payload)
