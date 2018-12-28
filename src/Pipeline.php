@@ -28,6 +28,7 @@ class Pipeline implements PipelineInterface
 
     /**
      * @param string $payload
+     *
      * @return $this
      */
     public function payload($payload)
@@ -39,6 +40,7 @@ class Pipeline implements PipelineInterface
 
     /**
      * @param $decorator
+     *
      * @return $this
      */
     public function pipe($decorator)
@@ -50,6 +52,7 @@ class Pipeline implements PipelineInterface
 
     /**
      * @param $method
+     *
      * @return $this
      */
     public function method($method)
@@ -61,6 +64,7 @@ class Pipeline implements PipelineInterface
 
     /**
      * @param null $callback
+     *
      * @return mixed
      */
     public function process($callback = null)
@@ -89,6 +93,7 @@ class Pipeline implements PipelineInterface
 
     /**
      * @param callable|null $callback
+     *
      * @return callable
      */
     protected function prepareCallback($callback = null)
@@ -98,6 +103,7 @@ class Pipeline implements PipelineInterface
                 return $payload;
             };
         }
+
         return $callback;
     }
 }
