@@ -40,6 +40,7 @@ class PipelineTest extends PHPUnit_Framework_TestCase
             }
         });
 
-        $pipeline->payload(1)->method('handle')->process();
+        $result = $pipeline->payload(1)->method('handle')->process();
+        $this->assertSame(14, $result);
     }
 }

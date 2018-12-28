@@ -11,3 +11,34 @@
 <a href="http://www.php.net/"><img src="https://img.shields.io/badge/php-%3E%3D5.6-8892BF.svg" /></a>
 <a href="https://github.com/RunnerLee/pipeline"><img src="https://poser.pugx.org/runner/pipeline/license" /></a>
 </p>
+
+## Usage
+
+```php
+<?php
+
+use Runner\Pipeline\Pipeline;
+
+$pipeline = new Pipeline();
+
+$a = function ($payload, $next) {
+    echo 'a' . PHP_EOL;
+    return $next($payload);
+};
+$b = function ($payload, $next) {
+    echo 'b' . PHP_EOL;
+    return $next($payload);
+};
+$c = new class{
+    public function handle($payload, $next)
+    {
+        echo 'c' . PHP_EOL;
+        return $next($payload);
+    }
+};
+
+$pipeline->pipe($a)->pipe($b)->pipe($c)->method('handle')->payload(1)->process(function ($payload) {
+    return $payload * 20;
+});
+
+```
